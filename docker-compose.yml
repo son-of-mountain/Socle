@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # --- 1. Base de Données Oracle ---
+  db:
+    image: gvenzl/oracle-xe:11-slim
+    environment:
+      ORACLE_PASSWORD: oracle
+      APP_USER: dosi
+      APP_USER_PASSWORD: dosi
+    volumes:
+      - ./backend/database:/container-entrypoint-initdb.d
+    ports:
+      - "1521:1521"
+    healthcheck:
+      test: ["CMD", "sqlplus", "-L", "system/oracle@//localhost:1521/XE", "SELECT 1 FROM DUAL"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # --- 2. Backend (Spring Boot) ---
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080" # Tu peux accéder à l'API directement si besoin
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # Connexion interne Docker vers le service 'db'
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@db:1521:XE
+      SPRING_DATASOURCE_USERNAME: dosi
+      SPRING_DATASOURCE_PASSWORD: dosi
+      SPRING_SQL_INIT_MODE: always
+      SPRING_SQL_INIT_CONTINUE_ON_ERROR: "true"
+
+  # --- 3. Frontend (Vue.js + Nginx) ---
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80" # Accès au site via http://localhost
+    depends_on:
+      - backend
