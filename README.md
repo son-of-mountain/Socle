@@ -1,17 +1,15 @@
 ![Moi](tp.png "This is a sample image.")
 # Socle Applicatif - Gestion Universitaire
-
 Ce projet est une application web complète de gestion universitaire, composée de :
-- **Frontend** : Vue.js 3 + Vite (Interface utilisateur) ([lien github : https://github.com/melhansali/SocleApplicatif](https://github.com/son-of-mountain/SocleFrontend))
-- **Backend** : Spring Boot (API REST) (lien github : https://github.com/son-of-mountain/Socle)
-- **Base de Données** : Oracle XE 11g
+
+- **Frontend** : Vue.js 3 + Vite (interface utilisateur)  [GitHub - SocleFrontend](https://github.com/melhansali/SocleFrontend)
+
+- **Backend** : Spring Boot (API REST  [GitHub - SocleBackend](https://github.com/melhansali/SocleBackend)
+
+- **Base de données** : Oracle XE 11g
+
 
 ## 🚀 Démarrage Rapide (Livrable)
-
-Le projet est configuré pour être lancé en **une seule commande** via Docker Compose.
-
-### Prérequis
-- Docker Desktop (ou Docker Engine + Docker Compose) installé.
 
 ### Lancer l'application
 
@@ -21,15 +19,6 @@ Le projet est configuré pour être lancé en **une seule commande** via Docker 
 ```bash
 docker compose up --build
 ```
-
-Cette commande va :
-- Construire les images du Backend et du Frontend.
-- Démarrer la base de données Oracle.
-- Initialiser la base de données (Schéma + Données sauvegardées).
-- Lancer les serveurs d'application.
-
-> **Note** : Le premier démarrage de la base de données Oracle peut prendre quelques minutes. Attendez que le service `backend` démarre complètement.
-
 ### Accès à l'application
 
 Une fois les services démarrés :
@@ -42,14 +31,21 @@ Une fois les services démarrés :
 
 ---
 
+Le projet est configuré pour être lancé en **une seule commande** via Docker Compose.
+
+### Prérequis
+- Docker Desktop (ou Docker Engine + Docker Compose) installé.
+
+
+Cette commande va :
+- Construire les images du Backend et du Frontend.
+- Démarrer la base de données Oracle.
+- Initialiser la base de données (Schéma + Données sauvegardées).
+- Lancer les serveurs d'application.
+
+> **Note** : Le premier démarrage de la base de données Oracle peut prendre quelques minutes. Attendez que le service `backend` démarre complètement.
+
 ## 💾 Sauvegarde des Données (Optionnel)
-
-Si vous ajoutez des données via l'application et souhaitez les conserver pour une future démonstration (ou pour la livraison), utilisez le script fourni :
-
-```bash
-# Sauvegarde l'état actuel de la base de données
-./save_db_data.sh
-```
 
 Cela génère un fichier `backend/database/data.dmp`. Ce fichier sera automatiquement chargé au prochain redémarrage (`docker compose up`), garantissant que vos données sont persistantes même après suppression des conteneurs.
 
