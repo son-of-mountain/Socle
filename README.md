@@ -1,5 +1,24 @@
 ![Moi](tp.png "This is a sample image.")
 # Socle Applicatif - Gestion Universitaire
+
+## Lancer l'application
+```bash
+docker compose up --build
+```
+
+- **Application Web (Frontend)** :
+
+ [http://localhost](http://localhost)
+
+- **API Backend (Swagger/Info)** : 
+
+[http://localhost:8080](http://localhost:8080)
+
+- **Base de Données** : Port `1521`
+  - User: `dosi`
+  - Password: `dosi`
+
+---
 Ce projet est une application web complète de gestion universitaire, composée de :
 
 - **Frontend** : Vue.js 3 + Vite (interface utilisateur)  [GitHub - SocleFrontend](https://github.com/melhansali/SocleFrontend)
@@ -8,28 +27,6 @@ Ce projet est une application web complète de gestion universitaire, composée 
 
 - **Base de données** : Oracle XE 11g
 
-
-## 🚀 Démarrage Rapide (Livrable)
-
-### Lancer l'application
-
-1. Ouvrez un terminal à la racine du projet.
-2. Exécutez la commande suivante :
-
-```bash
-docker compose up --build
-```
-### Accès à l'application
-
-Une fois les services démarrés :
-
-- **Application Web (Frontend)** : [http://localhost](http://localhost)
-- **API Backend (Swagger/Info)** : [http://localhost:8080](http://localhost:8080)
-- **Base de Données** : Port `1521`
-  - User: `dosi`
-  - Password: `dosi`
-
----
 
 Le projet est configuré pour être lancé en **une seule commande** via Docker Compose.
 
