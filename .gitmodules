@@ -1,3 +1,6 @@
 [submodule "SocleBackend"]
 	path = SocleBackend
 	url = https://github.com/son-of-mountain/SocleBackend
+[submodule "SocleFrontend"]
+	path = SocleFrontend
+	url = https://github.com/son-of-mountain/SocleFrontend
